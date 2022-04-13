@@ -10,7 +10,7 @@ const app = express();
 
 // db
 const db = mysql.createConnection({
-    host: '127.0.0.1',
+    host: '192.168.1.100',
     user: 'mac',
     password: 'qwerty',
     database: 'smart_greenhouse'
@@ -29,7 +29,8 @@ app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true}));
 
 // routes
-
+const testRoutes = require("./routes/test");
+app.use("/", testRoutes)
 
 // ports
 const port = process.env.PORT || 8080;
