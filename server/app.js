@@ -9,7 +9,20 @@ require("dotenv").config();
 const app = express();
 
 // db
+const db = mysql.createConnection({
+    host: '127.0.0.1',
+    user: 'mac',
+    password: 'qwerty',
+    database: 'smart_greenhouse'
+})
 
+db.connect(err =>{
+    if(err) {
+        console.log('Error connecting to Database');
+        return;
+    }
+    console.log('Connection established');
+})
 
 // middleware
 app.use(morgan("dev"));
