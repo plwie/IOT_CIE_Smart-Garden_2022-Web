@@ -9,4 +9,4 @@ const {getTest} = require("../controllers/test");
 // api routes
 router.get('/test', getTest)
 
-module.exports
+module.exports = router
