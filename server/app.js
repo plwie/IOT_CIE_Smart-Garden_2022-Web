@@ -10,7 +10,7 @@ const app = express();
 
 // db
 const db = mysql.createConnection({
-    host: '192.168.1.100',
+    host: 'localhost',
     user: 'mac',
     password: 'qwerty',
     database: 'smart_greenhouse'
@@ -38,4 +38,4 @@ const port = process.env.PORT || 8080;
 
 // listener
 
-const server = app.listenerCount(port, () => console.log(`Server is running on port ${port}`));
+const server = app.listen(port, () => console.log(`Server is running on port ${port}`));
