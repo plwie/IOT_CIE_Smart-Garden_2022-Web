@@ -1,7 +1,7 @@
 // import React, { useState, useEffect } from "react";
 import "../src/component/App.css"
 
-import ProgressBar from "../src/function/progressBar.jsx"
+import ProgressBar from "./function/progressBar.jsx"
 
 export default function App() {
   // const [value, setValue] = useState(0);
@@ -20,6 +20,8 @@ export default function App() {
     // }, 1000);
   // }, []);
   return (
+
+    //Water & Fertilizer status bar
     <ProgressBar color={"#34dbf4"} width={"150px"} value={75} max={100} />
   );
 }
