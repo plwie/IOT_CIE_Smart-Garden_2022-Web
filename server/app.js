@@ -1,9 +1,7 @@
 // Import modules
 const express = require('express');
 const mysql = require('mysql');
-const morgan = require('morgan')
 const cors = require('cors')
-require("dotenv").config();
 
 // app
 const app = express();
@@ -11,7 +9,7 @@ const app = express();
 // db
 const db = mysql.createConnection({
     host: 'localhost',
-    user: 'mac',
+    user: 'root',
     password: 'qwerty',
     database: 'smart_greenhouse'
 })
@@ -25,17 +23,16 @@ db.connect(err =>{
 })
 
 // middleware
-app.use(morgan("dev"));
-app.use(cors({ origin: true, credentials: true}));
+app.get("/plant_pot", (req,res) =>{
+    db.query("SELECT * FROM plant_pot", (err, result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result);
+        }
+    })
+})
 
-// routes
-const testRoutes = require("./routes/test");
-app.use("/", testRoutes)
-
-// ports
-const port = process.env.PORT || 8080;
-
-
-// listener
-
-const server = app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen("8081", () => {
+    console.log("server is running on port 8081")
+})

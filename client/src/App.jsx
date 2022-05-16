@@ -2,8 +2,17 @@ import React, { useState } from "react";
 import "../src/component/Card.css"
 import ReactiveButton from "reactive-button";
 import ProgressBar from "./component/ProgressBar.jsx"
+import Axios from 'axios'
 
 export default function App() {
+
+  const [plantStat, setPlantStat] = useState([]);
+  Axios.get("http://localhost:3001/plant_pot").then((response) => {
+      setPlantStat(response.data)
+  })
+  plantStat.map((val, key) => {
+    hvd1 = val.date_harvest
+  })
   // Take data from database
   let water_status = 75;
   let fertilizer_status = 50;
@@ -17,8 +26,8 @@ export default function App() {
   let P2 = 25;
   let K1 = 17;
   let K2 = 15;
-  let hvd1 = "20/5/2022";
-  let hvd2 = "20/5/2022";
+  let hvd1;
+  let hvd2;
 
   const [sunshade_status, setSSstate] = useState('OFF');
 
