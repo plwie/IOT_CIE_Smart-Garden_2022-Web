@@ -1,75 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../src/component/Card.css"
-import ReactiveButton from "reactive-button";
+// import ReactiveButton from "reactive-button";
 import ProgressBar from "./component/ProgressBar.jsx"
-import Axios from 'axios'
+import axios from 'axios'
 
 export default function App() {
 
-  const [plantStat, setPlantStat] = useState([]);
-  Axios.get("http://localhost:3001/plant_pot").then((response) => {
-      setPlantStat(response.data)
-  })
-  plantStat.map((val, key) => {
-    hvd1 = val.date_harvest
-  })
+  const [soilInfo, setSoilInfo] = useState();
+  useEffect(() => {
+    getSoil();
+  }, []);
+  const getSoil = async () => {
+    const response = await axios.get('http://localhost:8081/soil_info');
+    setSoilInfo(response.data);
+    console.log(soilInfo)
+  }
+   
+
+
   // Take data from database
   let water_status = 75;
   let fertilizer_status = 50;
   let temperature = 25;
   let humidity = 100;
   let moisture1 = 100;
-  let moisture2 = 80;
+  // let moisture2 = 80;
   let N1 = 30;
-  let N2 = 25;
+  // let N2 = 25;
   let P1 = 30;
-  let P2 = 25;
+  // let P2 = 25;
   let K1 = 17;
-  let K2 = 15;
+  // let K2 = 15;
   let hvd1;
-  let hvd2;
+  // let hvd2;
 
-  const [sunshade_status, setSSstate] = useState('OFF');
-
-    const sunClickHandler = () => {
-        setSSstate('loading');
-        setTimeout(() => {
-          if (sunshade_status === "OFF"){
-            setSSstate('On');
-          } else {
-            setSSstate('OFF');
-          }
-        }, 2000);
-    }
-
-    const [coolingfan_status, setfanState] = useState('OFF');
-
-    const fanClickHandler = () => {
-        setfanState('loading');
-        setTimeout(() => {
-          if (coolingfan_status === "OFF"){
-            setfanState('On');
-          } else {
-            setfanState('OFF');
-          }
-        }, 2000);
-    }
-  
-  // const [value, setValue] = useState(0);
-
-  // useEffect(() => {
-    // const interval = setInterval(() => {
-    //   setValue(oldValue => {
-    //     const newValue = oldValue + 10;
-
-    //     if (newValue === 100) {
-    //       clearInterval(interval);
-    //     }
-
-    //     return newValue;
-    //   });
-    // }, 1000);
-  // }, []);
   return (
     <body>
       {/* Left Side */}
@@ -108,15 +72,17 @@ export default function App() {
                 <img className="lemon" src={"https://www.nanagarden.com/Picture/Product/400/298906.jpg"}/>
                 <div className="pot_info">
                   <div className="__pot_border">
-                    Moisture: {moisture2} 
-                    <br/><br/><br/>
-                    Nitrogen: {N2}
-                    <br/><br/><br/>
-                    Phosphorus: {P2}
-                    <br/><br/><br/>
-                    Protassium: {K2}
-                    <br/><br/><br/>
-                    Harvest date: {hvd2}
+                    { soilInfo.map((soil) => (
+                        <div key={ soil.id }>
+                          Moisture: {soil.moisture_level} 
+                          <br/><br/><br/>
+                          Nitrogen: {soil.nitrogen_level}
+                          <br/><br/><br/>
+                          Phosphorus: {soil.phosphorus_level}
+                          <br/><br/><br/>
+                          Protassium: {soil.potassium_level}
+                        </div>
+                    )) }
                   </div>
                 </div>
               </div>
@@ -134,10 +100,10 @@ export default function App() {
               <h5> 
                 <span>Water Status ({water_status}%)</span>
               <span>
-                <ProgressBar color={"#34dbf4"} width={"150px"} value={water_status} max={100} />
+                <ProgressBar color={"#34dbf4"} width={"120px"} value={water_status} max={100} />
                 <br/><br/>
                 <span>Fertilizer Status ({fertilizer_status}%)</span>
-                <ProgressBar color={"#33a2a2"} width={"150px"} value={fertilizer_status} max={100} />
+                <ProgressBar color={"#33a2a2"} width={"120px"} value={fertilizer_status} max={100} />
               </span>
               </h5>
             </div>
@@ -155,23 +121,23 @@ export default function App() {
                 </div>
                 <div className="__ambient_border">
                 <h4>Sunshade Status</h4>
-                <h5>{sunshade_status}</h5>
-                <h5><ReactiveButton
+                <h5>{"ON"}</h5>
+                {/* <h5><ReactiveButton
                 idleText={"Turn On/Off"}
                 rounded={true}
                 color={'blue'}
                 onClick={sunClickHandler}
-                /></h5>
+                /></h5> */}
               </div>
               <div className="__ambient_border">
                 <h4>Cooling fan</h4>
-                <h5>{coolingfan_status}</h5>
-                <h5><ReactiveButton
+                <h5>{"ON"}</h5>
+                {/* <h5><ReactiveButton
                 idleText={"Turn On/Off"}
                 rounded={true}
                 color={'blue'}
                 onClick={fanClickHandler}
-                /></h5>
+                /></h5> */}
               </div>
             </div>
           </div>

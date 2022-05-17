@@ -22,7 +22,7 @@ db.connect(err =>{
     console.log('Connection established');
 })
 
-// middleware
+// API
 app.get("/plant_pot", (req,res) =>{
     db.query("SELECT * FROM plant_pot", (err, result) => {
         if(err) {
@@ -33,6 +33,27 @@ app.get("/plant_pot", (req,res) =>{
     })
 })
 
+app.get("/soil_info", (req,res) =>{
+    db.query("SELECT * FROM soil_info", (err, result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+app.get("/sunshade_state", (req,res) => {
+    db.query("select * from sunshade_state", (err, result) => {
+        if(err) {
+            console.log(err)
+        } else {
+            res.send(result);
+        }
+    })
+})
+
+//PORT
 app.listen("8081", () => {
     console.log("server is running on port 8081")
 })
