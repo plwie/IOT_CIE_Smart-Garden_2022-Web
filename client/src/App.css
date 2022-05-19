@@ -1,0 +1,112 @@
+body {
+  background-color: #e0e0e0;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 800px) {
+  .main,
+  .right {
+    width: 100%;
+  }
+}
+
+.Row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+}
+
+.Column {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.Main {
+  float: left;
+  padding: 20px;
+  width: 70%;
+}
+
+.Right {
+  float: left;
+  padding: 10px;
+  width: 25%;
+}
+
+.Main_header {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #696969;
+  font-family: 'New York';
+}
+
+.Watering_box {
+  border: 3px solid #708090;
+  border-radius: 25px;
+  border-width: medium;
+  height: 300px;
+  padding: 10px;
+}
+
+.Watering_head {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: 'New York';
+}
+
+.Watering {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #696969;
+  font-family: 'New York';
+}
+
+.Ambient_box {
+  border: 3px solid #708090;
+  border-radius: 25px;
+  border-width: medium;
+  height: 420px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.Plant_box {
+  border: 3px solid #708090;
+  border-radius: 25px;
+  border-width: medium;
+  font-family: 'New York';
+  height: 600px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.button {
+  transition-duration: 0.4s;
+  border-radius: 8px;
+  border: none;
+  /* padding: 14px 40px; */
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 100px;
+  background-color: #228B22;
+}
+
+.button:hover {
+  background-color: #006400; 
+  color: white;
+}
