@@ -47,8 +47,8 @@ app.get('/soil_info', (req, res) => {
 });
 
     //Water and Fertilizer
-app.get('/water_fertil', (req, res) => {
-    db.query("select * from watering_system", (err, result) => {
+app.get('/water', (req, res) => {
+    db.query("select * from watering_system order by time_stamp desc limit 1", (err, result) => {
         if (err) {
             console.log(err);
         } else {

@@ -31,24 +31,28 @@ function App() {
 
   const [soilInfo, setSoilInfo] = useState([]);
   const [ambient, setAmbient] = useState([]);
+  const [waterHeightGet, setWaterLevel] = useState([]);
   
   const getAmbient = async () => {
     const response = await axios.get("http://localhost:8081/ambient")
     setAmbient(response.data)
   }
 
-  useEffect(() => {
-    getAmbient()
-  },[])
-
   const getSoil = async () => {
     const response = await axios.get("http://localhost:8081/soil_info")
     setSoilInfo(response.data)
   }
 
+  const getWater = async () => {
+    const response = await axios.get("http://localhost:8081/water")
+    setWaterLevel(response.data)
+  }
+
   useEffect(() => {
+    getWater()
+    getAmbient()
     getSoil()
-  },[])
+  })
 
   const [sunroof_status, setSSstate] = useState('OFF');
 
@@ -87,8 +91,9 @@ function App() {
   const temp = ambient[ambient.length-1]["temperature"];
   const humid = ambient[ambient.length-1]["humidity_level"];
 
-  const waterHeightGet = 30;
-  const waterLevel = 100 - waterHeightGet
+  const waterHeight = waterHeightGet[waterHeightGet.length-1]["water_level"]
+  const waterLevel = 17 - waterHeight;
+  const waterLeft = waterLevel/15 *100
 
   return (
     <body>
@@ -135,8 +140,8 @@ function App() {
         <div className='Watering_box'>
           <h1 className='Watering_head'> Water Status</h1>
           <img  src={waterIcon} className="water_img" alt="watericon"/>
-          <h2 className='Watering'>Water Left {waterLevel} %</h2>
-          <ProgressBar color={"#34dbf4"} width={"70px"} value={waterLevel} max={100}/>
+          <h2 className='Watering'>Water Left {Math.round(waterLeft)} %</h2>
+          <ProgressBar color={"#34dbf4"} width={"70px"} value={waterLevel} max={15}/>
         </div>
         <div className='Ambient_box'>
           <h1 className='Watering_head'> Ambient Status</h1>
