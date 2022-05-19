@@ -115,7 +115,7 @@ body {
   border-radius: 25px;
   border-width: medium;
   font-family: 'New York';
-  height: 600px;
+  height: 620px;
   padding: 10px;
   justify-content: center;
   align-items: center;
@@ -155,7 +155,7 @@ body {
 }
 
 .plant_img {
-  width: 150px;
+  width: 70px;
 }
 
 .temp_img {

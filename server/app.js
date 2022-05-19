@@ -77,18 +77,6 @@ app.get('/sunshade_state', (req, res) => {
     });
 });
 
-app.put(`/update`, (req, res) => {
-    console.log(req.body)
-    res.send('hello world')
-    // db.query("update sunshade_state set sunshade_status = ?", sunshade_status, (err, result) => {
-    //     if(err) {
-    //         console.log(err);
-    //     } else {
-    //         res.send(result);
-    //     }
-    // })
-})
-
 //PORT
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
