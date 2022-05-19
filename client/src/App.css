@@ -1,5 +1,5 @@
 body {
-  background-color: #e0e0e0;
+  background-color: #292929;
   flex-direction: column;
 }
 
@@ -38,16 +38,32 @@ body {
   width: 25%;
 }
 
-.Main_header {
+.Head_box {
+  border: 3px solid #708090;
+  background-color: #3f3f3f;
+  border-radius: 25px;
+  border-width: medium;
+  font-family: 'New York';
+  height: 90px;
+  padding: 10px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #696969;
+}
+
+.Main_header {
+  text-align: center;
+  color: #f1f1f1;
+}
+
+.head_text {
+  font-size: 30px;
   font-family: 'New York';
 }
 
 .Watering_box {
   border: 3px solid #708090;
+  background-color: #3f3f3f;
   border-radius: 25px;
   border-width: medium;
   height: 300px;
@@ -58,6 +74,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: #f1f1f1;
   font-family: 'New York';
 }
 
@@ -65,12 +82,21 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #696969;
+  color: #f1f1f1;
+  font-family: 'New York';
+}
+
+.fetches {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #f1f1f1;
   font-family: 'New York';
 }
 
 .Ambient_box {
   border: 3px solid #708090;
+  background-color: #3f3f3f;
   border-radius: 25px;
   border-width: medium;
   height: 420px;
@@ -82,6 +108,7 @@ body {
 
 .Plant_box {
   border: 3px solid #708090;
+  background-color: #3f3f3f;
   border-radius: 25px;
   border-width: medium;
   font-family: 'New York';
@@ -94,7 +121,7 @@ body {
 
 .button {
   transition-duration: 0.4s;
-  border-radius: 8px;
+  border-radius: 10%;
   border: none;
   /* padding: 14px 40px; */
   width: 100px;
@@ -102,11 +129,29 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 100px;
-  background-color: #228B22;
+  color: white;
+  font-size: 25px;
+  background-color: #69c6af;
 }
 
 .button:hover {
-  background-color: #006400; 
-  color: white;
+  background-color: #244a80; 
+  color: rgb(188, 188, 188);
+}
+
+.logo_img {
+  width: 90px;
+}
+
+.water_img {
+  width: 100px;
+  padding-left: 120px;
+}
+
+.plant_img {
+  width: 150px;
+}
+
+.temp_img {
+  width: 40px;
 }
