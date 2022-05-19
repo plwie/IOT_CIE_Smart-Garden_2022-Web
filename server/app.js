@@ -37,7 +37,7 @@ app.get('/plant_pot', (req, res) => {
 
     //Soil Info
 app.get('/soil_info', (req, res) => {
-    db.query("select * from soil_info", (err, result) => {
+    db.query("select * from soil_info order by time_stamp desc limit 2", (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -58,7 +58,7 @@ app.get('/water_fertil', (req, res) => {
 });
 
 app.get('/ambient', (req, res) => {
-    db.query("select * from ambient", (err, result) => {
+    db.query("select * from ambient order by time_stamp desc limit 1", (err, result) => {
         if (err) {
             console.log(err);
         } else {
