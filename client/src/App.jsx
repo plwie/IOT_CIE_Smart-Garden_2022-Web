@@ -21,7 +21,7 @@ const firebaseConfig = {
   measurementId: "G-B93B4H7958"
 };
 
-// // Initialize Firebase
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const database = getDatabase();
 
@@ -72,27 +72,20 @@ function App() {
         }, 2000);
      }
 
-  const soil_info1 = soilInfo[soilInfo.length-2];
-  const soil_info2 = soilInfo[soilInfo.length-1];
+  const soil_info = soilInfo[soilInfo.length-2];
 
 
-  const moisture1 = soil_info1["moisture_level"];
-  const N1 = soil_info1["nitrogen_level"];
-  const P1 = soil_info1["phosphorus_level"];
-  const K1 = soil_info1["potassium_level"];
-  const F1 = soil_info1["fertility"];
-
-  const moisture2 = soil_info2["moisture_level"];
-  const N2 = soil_info2["nitrogen_level"];
-  const P2 = soil_info2["phosphorus_level"];
-  const K2 = soil_info2["potassium_level"];
-  const F2 = soil_info2["fertility"];
+  const moisture = soil_info["moisture_level"];
+  const N = soil_info["nitrogen_level"];
+  const P = soil_info["phosphorus_level"];
+  const K = soil_info["potassium_level"];
+  const F = soil_info["fertility"];
 
   const temp = ambient[ambient.length-1]["temperature"];
   const humid = ambient[ambient.length-1]["humidity_level"];
 
   const waterHeight = waterHeightGet[waterHeightGet.length-1]["water_level"]
-  const waterLevel = 17 - waterHeight;
+  const waterLevel = 16 - waterHeight;
   const waterLeft = waterLevel/15 *100
 
   return (
@@ -104,34 +97,32 @@ function App() {
         <div className='Row'>
           <div className='Column'>
             <div className='Plant_box'>
-            <h1 className='fetches'>Pot No.1</h1>
               <img  src={plantIcon} className="plant_img" alt="plant"/>
               <h2 className='Watering'>Moisture</h2>
-              <h3 className='fetches'>{moisture1}</h3>
+              <h3 className='fetches'>{moisture}</h3>
               <h2 className='Watering'>Fertility</h2>
-              <h3 className='fetches'>{F1} %</h3>
+              <h3 className='fetches'>{F} %</h3>
               <h2 className='Watering'>Nitrogen</h2>
-              <h3 className='fetches'>{N1}</h3>
+              <h3 className='fetches'>{N}</h3>
               <h2 className='Watering'>Phosphorus</h2>
-              <h3 className='fetches'>{P1}</h3>
+              <h3 className='fetches'>{P}</h3>
               <h2 className='Watering'>Potassium</h2>
-              <h3 className='fetches'>{K1}</h3>
+              <h3 className='fetches'>{K}</h3>
             </div>
           </div>
           <div className='Column'>
             <div className='Plant_box'>
-            <h1 className='fetches'>Pot No.2</h1>
               <img  src={plantIcon} className="plant_img" alt="plant"/>
               <h2 className='Watering'>Moisture</h2>
-              <h3 className='fetches'>{moisture2}</h3>
+              <h3 className='fetches'>{moisture}</h3>
               <h2 className='Watering'>Fertility</h2>
-              <h3 className='fetches'>{F2} %</h3>
+              <h3 className='fetches'>{F} %</h3>
               <h2 className='Watering'>Nitrogen</h2>
-              <h3 className='fetches'>{N2}</h3>
+              <h3 className='fetches'>{N}</h3>
               <h2 className='Watering'>Phosphorus</h2>
-              <h3 className='fetches'>{P2}</h3>
+              <h3 className='fetches'>{P}</h3>
               <h2 className='Watering'>Potassium</h2>
-              <h3 className='fetches'>{K2}</h3>
+              <h3 className='fetches'>{K}</h3>
             </div>
           </div>
         </div>
