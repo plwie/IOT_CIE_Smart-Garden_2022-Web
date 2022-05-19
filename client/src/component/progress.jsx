@@ -3,8 +3,9 @@ import Styled from 'styled-components';
 
 const Container = Styled.div`
     progress {
-        margin-right: 8px;
-        padding-left: 35px;
+        // margin-right: 8px;
+        // padding-left: 35px;
+        padding-right: 80%;
     }
 
     progress[value] {

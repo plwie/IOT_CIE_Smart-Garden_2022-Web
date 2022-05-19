@@ -66,6 +66,9 @@ body {
   background-color: #3f3f3f;
   border-radius: 25px;
   border-width: medium;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   height: 300px;
   padding: 10px;
 }
@@ -144,8 +147,11 @@ body {
 }
 
 .water_img {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   width: 100px;
-  padding-left: 120px;
+  /* padding-left: 120px; */
 }
 
 .plant_img {
